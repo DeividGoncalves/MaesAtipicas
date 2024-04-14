@@ -2,35 +2,57 @@
 
     if(isset($_POST['submit']))
     {
-        print_r('Nome: ' . $_POST['nome']);
-        print_r('<br>');
-        print_r('Telefone: ' . $_POST['telefone']);
-        print_r('<br>');
-        print_r('Sexo: ' . $_POST['genero']);
-        print_r('<br>');
-        print_r('Data de nascimento: ' . $_POST['data_nascimento']);
+        // print_r('Nome: ' . $_POST['nome']);
+        // print_r('<br>');
 
-        print_r('<br>');
-        print_r('Endereço: ' . $_POST['endereco']);
+        //  print_r('Telefone: ' . $_POST['telefone']);
+        //  print_r('<br>');
 
+        //  print_r('Sexo: ' . $_POST['genero']);
+        //  print_r('<br>');
+        //  print_r('Data de nascimento: ' . $_POST['datanascimento']);
+
+        //  print_r('<br>');
+        //  print_r('Endereço: ' . $_POST['endereco']);
+
+        //  print_r('<br>');
+        //  print_r('tratamento: ' . $_POST['tratamento']);
+
+        //  print_r('<br>');
+        //  print_r('filaEspecialidade: ' . $_POST['filaEspecialidade']);
+
+        //  print_r('<br>');
+        //  print_r('precisaNeuro: ' . $_POST['precisaNeuro']);
+
+        //  print_r('<br>');
+        //  print_r('diagnostico: ' . $_POST['diagnostico']);
+
+        //  print_r('<br>');
+        //  print_r('filaApae: ' . $_POST['filaApae']);
+
+        //  print_r('<br>');
+        //  print_r('filaCaps: ' . $_POST['filaCaps']);
+         
         include_once('config.php');
 
         $nome = $_POST['nome'];
-        $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $sexo = $_POST['genero'];
-        $data_nasc = $_POST['data_nascimento'];
-
+        $datanascimento = $_POST['datanascimento'];
         $endereco = $_POST['endereco'];
+        $diagnostico = $_POST['diagnostico'];
+        $tratamento = $_POST['tratamento'];
+        $precisaneuro = $_POST['precisaNeuro'];
+        $precisapac = $_POST['precisaPac'];
+        $filaapae = $_POST['filaApae'];
+        $filaespecialidade = $_POST['filaEspecialidade'];
+        $filacaps = $_POST['filaCaps'];
 
-       $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,senha,email,telefone,sexo,data_nasc,cidade,estado,endereco) 
-       VALUES ('$nome','$senha','$email','$telefone','$sexo','$data_nasc','$cidade','$estado','$endereco')");
-        
-        $result = mysqli_query($conexao, "INSERT INTO users(nome, senha) 
-        VALUES ('$nome','$senha')");
+
+       $result = mysqli_query($conexao, "INSERT INTO pacientes(nome, telefone, sexo, datanascimento, endereco, diagnostico, tratamento, precisaneuro, precisapac, filaapae, filaespecialidade, filacaps) 
+       VALUES ('$nome','$telefone','$sexo','$datanascimento','$endereco','$diagnostico','$tratamento','$precisaneuro','$precisapac','$filaapae','$filaespecialidade','$filacaps')");
         
 
-        header('Location: login.php');
     }
 
 ?>
@@ -60,6 +82,7 @@
         fieldset{
             justify-content: center;
             border: 3px solid dodgerblue;
+            
         }
         legend{
             border: 1px solid dodgerblue;
@@ -117,8 +140,8 @@
 
         .teste {
             float: left;
-            width: 45%; /* Ajuste a largura conforme necessário */
-            margin-right: 5%; /* Espaço entre as divs */
+            width: 46%; /* Ajuste a largura conforme necessário */
+            margin-right:4.0%; /* Espaço entre as divs */
     }
     </style>
 </head>
@@ -143,59 +166,71 @@
                         <p>Sexo:</p>
                         <input type="radio" id="feminino" name="genero" value="feminino" required>
                         <label for="feminino">Feminino</label>
-                        <br>
+                        
                         <input type="radio" id="masculino" name="genero" value="masculino" required>
                         <label for="masculino">Masculino</label>
-                        <br>
-                        <input type="radio" id="outro" name="genero" value="outro" required>
-                        <label for="outro">Outro</label>
                         <br><br>
-                        <label for="data_nascimento"><b>Data de Nascimento:</b></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" required>
-                        <br><br><br>
+
+                        <label for="datanascimento"><b>Data de Nascimento:</b></label>
+                        <input type="date" name="datanascimento" id="datanascimento" required>
+                        <br><br>
                         <div class="inputBox">
                             <input type="text" name="endereco" id="endereco" class="inputUser" required>
                             <label for="endereco" class="labelInput">Endereço completo</label>
                         </div>
-                        
-                        <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
+                        <br>
+                        <div class="inputBox">
+                            <input type="text" name="diagnostico" id="diagnostico" class="inputUser" required>
+                            <label for="diagnostico" class="labelInput">diagnóstico</label>
+                        </div>
+
+                        <br>
+                        <div class="inputBox">
+                            <input type="text" name="tratamento" id="tratamento" class="inputUser" required>
+                            <label for="nome" class="labelInput">Tratamento</label>
+                        </div>
+                        <br>
                     </fieldset>
                 </div>
 
                 <div class="teste">
                     <fieldset>
-                        <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
-                        <br>
-                        <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
-                        <br> <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
-                        <br> <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
-                        <br> <p>paciente está em tratamento?</p>
-                        <input type="radio" id="feminino" name="tratamento" value="sim" required>
-                        <label for="feminino">Sim</label>
-                        <input type="radio" id="masculino" name="tratamento" value="nao" required>
-                        <label for="masculino">Não</label>
+                        
+                        <p>Precisa passar pelo Neurologista?</p>
+                        <input type="radio" id="precisaNeuro" name="precisaNeuro" value="sim" required>
+                        <label for="precisaNeuroS">Sim</label>
+                        <input type="radio" id="precisaNeuro" name="precisaNeuro" value="nao" required>
+                        <label for="precisaNeuroN">Não</label>
+
+                     
+
+                        <br> <p>Precisa de avaliação da PAC?</p>
+                        <input type="radio" id="precisaPacS" name="precisaPac" value="sim" required>
+                        <label for="precisaPacS">Sim</label>
+                        <input type="radio" id="precisaPacN" name="precisaPac" value="nao" required>
+                        <label for="precisaPacN">Não</label>
+
+                        <br><br>
+                        <div class="inputBox">
+                            <input type="text" name="filaEspecialidade" id="filaEspecialidade" class="inputUser" required>
+                            <label for="filaEspecialidade" class="labelInput">fila de alguma especialidades? Qual?</label>
+                        </div>
+                       
+                        <br> 
+                        <p>Está em fila de espera na APAE</p>
+                        <input type="radio" id="filaApaeS" name="filaApae" value="sim" required>
+                        <label for="filaApaeS">Sim</label>
+                        <input type="radio" id="filaApaeN" name="filaApae" value="nao" required>
+                        <label for="filaApaeN">Não</label>
+
+                        <br> <p>Está em fila de espera no CAPS?</p>
+                        <input type="radio" id="filaCapsS" name="filaCaps" value="sim" required>
+                        <label for="filaCapsS">Sim</label>
+                        <input type="radio" id="filaCapsN" name="filaCaps" value="nao" required>
+                        <label for="filaCapsN">Não</label>
                         <br>
                     </fieldset>
+                    <br>
                 </div>
                 <input type="submit" name="submit" id="submit">
             </fieldset>
