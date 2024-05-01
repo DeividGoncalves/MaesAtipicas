@@ -3,23 +3,35 @@
     include_once('config.php');
     if(isset($_POST['update']))
     {
-        $id = $_POST['id'];
+
+        echo "está setado";
+        $idpacientes = $_POST['idpacientes'];
         $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
         $telefone = $_POST['telefone'];
         $sexo = $_POST['genero'];
-        $data_nasc = $_POST['data_nascimento'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
+        $datanascimento = $_POST['datanascimento'];
         $endereco = $_POST['endereco'];
+        $diagnostico = $_POST['diagnostico'];
+        $tratamento = $_POST['tratamento'];
+        $precisaneuro = $_POST['precisaneuro'];
+        $precisapac = $_POST['precisapac'];
+        $filaapae = $_POST['filaapae'];
+        $filaespecialidade = $_POST['filaEspecialidade'];
+        $filacaps = $_POST['filacaps'];
         
-        $sqlInsert = "UPDATE usuarios 
-        SET nome='$nome',senha='$senha',email='$email',telefone='$telefone',sexo='$sexo',data_nasc='$data_nasc',cidade='$cidade',estado='$estado',endereco='$endereco'
-        WHERE id=$id";
+
+
+        $sqlInsert = "UPDATE  pacientes SET nome = '$nome', telefone = '$telefone', sexo = '$sexo', datanascimento = '$datanascimento', endereco = '$endereco',
+            diagnostico = '$diagnostico', tratamento = '$tratamento', precisaneuro = '$precisaneuro', precisapac = '$precisapac', filaapae = '$filaapae',
+             filaespecialidade = '$filaespecialidade', filacaps = '$filacaps' WHERE idpacientes='$idpacientes'";
+
+
         $result = $conexao->query($sqlInsert);
         print_r($result);
+    }else{
+        echo "não está setado";
+
     }
-    header('Location: sistema.php');
+     header('Location: sistema.php');
 
 ?>

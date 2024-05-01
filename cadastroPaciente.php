@@ -2,36 +2,7 @@
 
     if(isset($_POST['submit']))
     {
-        // print_r('Nome: ' . $_POST['nome']);
-        // print_r('<br>');
 
-        //  print_r('Telefone: ' . $_POST['telefone']);
-        //  print_r('<br>');
-
-        //  print_r('Sexo: ' . $_POST['genero']);
-        //  print_r('<br>');
-        //  print_r('Data de nascimento: ' . $_POST['datanascimento']);
-
-        //  print_r('<br>');
-        //  print_r('Endereço: ' . $_POST['endereco']);
-
-        //  print_r('<br>');
-        //  print_r('tratamento: ' . $_POST['tratamento']);
-
-        //  print_r('<br>');
-        //  print_r('filaEspecialidade: ' . $_POST['filaEspecialidade']);
-
-        //  print_r('<br>');
-        //  print_r('precisaNeuro: ' . $_POST['precisaNeuro']);
-
-        //  print_r('<br>');
-        //  print_r('diagnostico: ' . $_POST['diagnostico']);
-
-        //  print_r('<br>');
-        //  print_r('filaApae: ' . $_POST['filaApae']);
-
-        //  print_r('<br>');
-        //  print_r('filaCaps: ' . $_POST['filaCaps']);
          
         include_once('config.php');
 
@@ -52,6 +23,7 @@
        $result = mysqli_query($conexao, "INSERT INTO pacientes(nome, telefone, sexo, datanascimento, endereco, diagnostico, tratamento, precisaneuro, precisapac, filaapae, filaespecialidade, filacaps) 
        VALUES ('$nome','$telefone','$sexo','$datanascimento','$endereco','$diagnostico','$tratamento','$precisaneuro','$precisapac','$filaapae','$filaespecialidade','$filacaps')");
         
+        header('Location: sistema.php');
 
     }
 
@@ -62,7 +34,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário | GN</title>
+    <title>Cadastro de pacientes</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
@@ -81,11 +53,11 @@
         }
         fieldset{
             justify-content: center;
-            border: 3px solid dodgerblue;
+            border: 1px solid dodgerblue;
             
         }
         legend{
-            border: 1px solid dodgerblue;
+            border: 2px solid dodgerblue;
             padding: 10px;
             text-align: center;
             background-color: dodgerblue;
@@ -146,7 +118,6 @@
     </style>
 </head>
 <body>
-    <a href="home.php">Voltar</a>
     <div class="box">
         <form action="cadastroPaciente.php" method="POST">
             <fieldset>

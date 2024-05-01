@@ -1,6 +1,6 @@
 <?php
     session_start();
-     print_r($_REQUEST);
+    //  print_r($_REQUEST);
      if(isset($_POST['submit'])){
 
      }
@@ -23,7 +23,10 @@
         {
             unset($_SESSION['nome']);
             unset($_SESSION['senha']);
-            // header('Location: login.php');
+            echo "<script>
+            alert('Email ou senha incorretos');
+            window.location.href = 'home.php'
+            </script>";
         }
         else
         {
@@ -34,7 +37,10 @@
     }
      else
      {
-    //     // Não acessa
-         header('Location: login.php');
-     }
+        echo "<script>
+            alert('Email ou senha incorretos');
+            window.location.href = 'home.php'
+            </script>";
+    }
+   
 ?>
