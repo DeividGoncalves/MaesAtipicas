@@ -20,10 +20,11 @@
         $filacaps = $_POST['filaCaps'];
 
 
-       $result = mysqli_query($conexao, "INSERT INTO pacientes(nome, telefone, sexo, datanascimento, endereco, diagnostico, tratamento, precisaneuro, precisapac, filaapae, filaespecialidade, filacaps) 
-       VALUES ('$nome','$telefone','$sexo','$datanascimento','$endereco','$diagnostico','$tratamento','$precisaneuro','$precisapac','$filaapae','$filaespecialidade','$filacaps')");
+        $result = mysqli_query($conexao, "INSERT INTO pacientes(nome, telefone, sexo, datanascimento, endereco, diagnostico, tratamento, precisaneuro, precisapac, filaapae, filaespecialidade, filacaps) 
+        VALUES ('$nome','$telefone','$sexo','$datanascimento','$endereco','$diagnostico','$tratamento','$precisaneuro','$precisapac','$filaapae','$filaespecialidade','$filacaps')");
         
-        header('Location: sistema.php');
+         header('Location: sistema.php');
+    echo $endereco;
 
     }
 

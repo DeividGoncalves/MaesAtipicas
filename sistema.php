@@ -84,8 +84,8 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Data nascimento</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Dt nascimento</th>
                     <th scope="col">Endereco</th>
                     <th scope="col">Diagnostico</th>
                     <th scope="col">tratamento</th>
@@ -102,17 +102,18 @@
 
                         $idPacienteTeste = $user_data['idpacientes'];
                         echo "<tr>";
-                        echo "<td>".$user_data['nome']."</td>";
-                        echo "<td>".$user_data['telefone']."</td>";
-                        echo "<td>".$user_data['sexo']."</td>";
-                        echo "<td>".$user_data['datanascimento']."</td>";
-                        echo "<td>".$user_data['diagnostico']."</td>";
-                        echo "<td>".$user_data['tratamento']."</td>";
-                        echo "<td>".$user_data['precisaneuro']."</td>";
-                        echo "<td>".$user_data['precisapac']."</td>";
-                        echo "<td>".$user_data['filaapae']."</td>";
-                        echo "<td>".$user_data['filaespecialidade']."</td>";
-                        echo "<td>".$user_data['filacaps']."</td>";
+                        echo "<td>".substr($user_data['nome'], 0, 20)."</td>"; // Limita o nome a 20 caracteres
+                        echo "<td>".substr($user_data['telefone'], 0, 10)."</td>"; // Limita o telefone a 10 caracteres
+                        echo "<td>".substr($user_data['sexo'], 0, 1)."</td>"; // Limita o sexo a 1 caractere
+                        echo "<td>".$user_data['datanascimento']."</td>"; // Não limita a data de nascimento
+                        echo "<td>".substr($user_data['endereco'], 0, 30)."</td>"; // Limita o endereço a 30 caracteres
+                        echo "<td>".substr($user_data['diagnostico'], 0, 40)."</td>"; // Limita o diagnóstico a 50 caracteres
+                        echo "<td>".substr($user_data['tratamento'], 0, 40)."</td>"; // Limita o tratamento a 50 caracteres
+                        echo "<td>".substr($user_data['precisaneuro'], 0, 1)."</td>"; // Não limita a coluna precisa neuro
+                        echo "<td>".substr($user_data['precisapac'], 0, 1)."</td>"; // Não limita a coluna precisa pac
+                        echo "<td>".substr($user_data['filaapae'], 0, 1)."</td>"; // Não limita a coluna fila apae
+                         echo "<td>".$user_data['filaespecialidade']."</td>";
+                        //echo "<td>".$user_data['filacaps']."</td>";
                         echo "<td>
                         <a class='btn btn-sm btn-primary' href='edit.php?idpacientes=$user_data[idpacientes]' title='Editar'>
                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>

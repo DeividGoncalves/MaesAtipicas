@@ -38,7 +38,6 @@ $precisapac = "";
                 $precisapac = $user_data['precisapac'];
                 
             }
-            echo $datanascimento;
 
         }
         else
@@ -138,7 +137,6 @@ $precisapac = "";
     </style>
 </head>
 <body>
-    <a href="home.php">Voltar</a>
     <div class="box">
         <form action="saveEdit.php" method="POST">
             <fieldset>
