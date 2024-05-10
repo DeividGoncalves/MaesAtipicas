@@ -12,7 +12,8 @@
     if(!empty($_GET['search']))
     {
         $data = $_GET['search'];
-        $sql = "SELECT * FROM pacientes ORDER BY nome";
+        //$sql = "SELECT * FROM pacientes ORDER BY nome";
+        $sql = "SELECT * FROM pacientes WHERE nome LIKE '%$data%' ORDER BY nome";
     }
      else
      {
@@ -86,13 +87,14 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">Dt nascimento</th>
-                    <th scope="col">Endereco</th>
+                    <th scope="col">Bairro</th>
                     <th scope="col">Diagnostico</th>
                     <th scope="col">tratamento</th>
-                    <th scope="col">Precisa Neuro</th>
-                    <th scope="col">Precisa PAC</th>
+                    <th scope="col">Neuro</th>
+                    <th scope="col">PAC</th>
                     <th scope="col">Fila Especialidade</th>
                     <th scope="col">Fila APAE</th>
+                    <th scope="col">Caps</th>
                     <th scope="col">...</th>
                 </tr>
             </thead>
@@ -112,6 +114,8 @@
                         echo "<td>".substr($user_data['precisaneuro'], 0, 1)."</td>"; // Não limita a coluna precisa neuro
                         echo "<td>".substr($user_data['precisapac'], 0, 1)."</td>"; // Não limita a coluna precisa pac
                         echo "<td>".substr($user_data['filaapae'], 0, 1)."</td>"; // Não limita a coluna fila apae
+                        echo "<td>".substr($user_data['filacaps'], 0, 1)."</td>"; // Não limita a coluna fila apae
+
                          echo "<td>".$user_data['filaespecialidade']."</td>";
                         //echo "<td>".$user_data['filacaps']."</td>";
                         echo "<td>
@@ -140,7 +144,7 @@
 <script>
     var search = document.getElementById('pesquisar');
 
-    search.addEventListener("keydown", function(event) {
+    search.addEventListener("change", function(event) {
         if (event.key === "Enter") 
         {
             searchData();
@@ -151,25 +155,5 @@
     {
         window.location = 'sistema.php?search='+search.value;
     }
-
-
-
-    document.getElementById('deleteLink').addEventListener('click', function(event) {
-        // Impedir o comportamento padrão do link para evitar redirecionamento imediato
-        event.preventDefault();
-        // Exibir a caixa de confirmação
-        var confirmDelete = confirm('Tem certeza de que deseja excluir este registro?');
-        if (confirmDelete) {
-            // Obter o href do link
-            var linkHref = this.getAttribute('href');
-            // Redirecionar para a página de exclusão se confirmado
-            window.location.href = 'deletepaciente.php?idpacientes=<?php echo $user_data["idpacientes"]; ?>';
-        } else {
-            // Redirecionar de volta à página principal se cancelado
-            window.location.href = 'sistema.php';
-        }
-    });
-
-
 </script>
 </html>

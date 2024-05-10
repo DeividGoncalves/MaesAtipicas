@@ -134,6 +134,10 @@ $precisapac = "";
             width: 46%; /* Ajuste a largura conforme necessário */
             margin-right:4.0%; /* Espaço entre as divs */
     }
+    .escondido {
+      display: none;
+    }
+  </style>
     </style>
 </head>
 <body>
@@ -144,7 +148,7 @@ $precisapac = "";
                 <br>
                 <div class="teste">
                     <fieldset>
-                        <div class="inputBox">
+                        <div class="inputBox escondido" id="campoId">
                             <input type="text" name="idpacientes" id="idpacientes" class="inputUser" required value="<?php echo $idpacientes?>">
                             <label for="nome" class="labelInput">IDPacientes</label>
                         </div>
@@ -233,4 +237,5 @@ $precisapac = "";
         </form>
     </div>
 </body>
+
 </html>
